@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'JYDropDownMenu_Example', :exclusive => true do
+  pod 'JYDropDownMenu', :path => '../'
+end
+
+target 'JYDropDownMenu_Tests', :exclusive => true do
+  pod 'JYDropDownMenu', :path => '../'
+
+  
+end
