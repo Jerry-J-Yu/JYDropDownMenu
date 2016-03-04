@@ -68,65 +68,71 @@ public class JYDropDownMenu: UIView {
     // The text alignment of the menu title. Default is NSTextAlignment.Left
     public var menuTitleTextAlignment: NSTextAlignment {
         get {
-            return self.menuTitleTextAlignment
+            return self.configuration.menuTitleTextAlignment
         }
         
         set (newValue) {
-            self.menuTitleTextAlignment = newValue
+            self.configuration.menuTitleTextAlignment = newValue
         }
     }
     
     // The font of the menu title. Default is System Font with the size calculated by the calculateAdaptiveFontSize() method
     public var menuTitleFont: UIFont {
         get {
-            return self.menuTitleFont
+            return self.configuration.menuTitleFont
         }
         
         set (newValue) {
-            self.menuTitleFont = newValue
+            self.configuration.menuTitleFont = newValue
         }
     }
     
     // The font of the menu items. Default is System Font with the size calculated by the calculateAdaptiveFontSize() method
     public var menuItemFont: UIFont {
         get {
-            return self.menuTitleFont
+            return self.configuration.menuItemFont
         }
         
         set (newValue) {
-            self.menuTitleFont = newValue
+            self.configuration.menuItemFont = newValue
         }
     }
     
     // The font color of the menu title. Default is UIColor.darkGrayColor()
-    public var menuTitleColor: UIColor {
+    public var menuTitleColor: UIColor! {
         get {
-            return self.menuTitleColor
+            return self.configuration.menuTitleColor
         }
         
         set (newValue) {
-            self.menuTitleColor = newValue
+            self.configuration.menuTitleColor = newValue
         }
     }
     
     // The font color of the menu items. Default is UIColor.darkGrayColor()
-    public var menuItemColor: UIColor {
+    public var menuItemColor: UIColor! {
         get {
-            return self.menuItemColor
+            return self.configuration.menuItemColor
         }
         
         set (newValue) {
-            self.menuItemColor = newValue
+            self.configuration.menuItemColor = newValue
         }
     }
     
-    // whether the menu is currently dropped down or not
+    // Whether the menu is currently dropped down or not
     public var isMenuShown: Bool!
     
-    // the choices in the menu
+    // The JYDropDownMenuDelegate property
+    weak public var delegate: JYDropDownMenuDelegate?
+    
+    // The default configuration
+    private var configuration = JYConfiguration()
+    
+    // The choices in the menu
     private var items: [String]!
     
-    // the menu title label
+    // The menu title label
     private var titleLabel: UILabel!
     
     // MARK: - Initialization
@@ -134,16 +140,37 @@ public class JYDropDownMenu: UIView {
     public init(frame: CGRect, title: String, items: [String]) {
         super.init(frame: frame)
         
-        setupViews(title, items: items)
+        setupViews(frame, title: title, items: items)
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setting up the required views and properties
+    // MARK: - Setting up the required views
     
-    private func setupViews(title: String, items: [String]) {
-        //
+    private func setupViews(frame: CGRect, title: String, items: [String]) {
+        self.backgroundColor = UIColor.greenColor()
+        
+        self.titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+        self.titleLabel.textAlignment = self.menuTitleTextAlignment
+        self.titleLabel.textColor = self.menuTitleColor
+        self.titleLabel.font = self.menuTitleFont
+        self.titleLabel.text = title
+        self.titleLabel.backgroundColor = self.configuration.menuBackgroundColor
+        self.titleLabel.userInteractionEnabled = true
+        
+        let menuTitleLabelTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "showMenu")
+        self.titleLabel.addGestureRecognizer(menuTitleLabelTapGestureRecognizer)
+        
+        self.addSubview(self.titleLabel)
+        
+        self.items = items
+        
+        self.isMenuShown = false
+    }
+    
+    func showMenu() {
+        // TODO: implement dropping down the menu
     }
 }
