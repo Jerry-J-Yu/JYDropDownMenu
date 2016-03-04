@@ -124,14 +124,14 @@ public class JYDropDownMenu: UIView {
     public var isMenuShown: Bool!
     
     // the choices in the menu
-    private var items: [AnyObject]!
+    private var items: [String]!
     
     // the menu title label
     private var titleLabel: UILabel!
     
     // MARK: - Initialization
     
-    public init(frame: CGRect, title: String, items: [AnyObject]) {
+    public init(frame: CGRect, title: String, items: [String]) {
         super.init(frame: frame)
         
         setupViews(title, items: items)
@@ -143,7 +143,7 @@ public class JYDropDownMenu: UIView {
     
     // MARK: - Setting up the required views and properties
     
-    private func setupViews(title: String, items: [AnyObject]) {
+    private func setupViews(title: String, items: [String]) {
         //
     }
 }
