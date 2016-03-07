@@ -65,7 +65,7 @@ public class JYDropDownMenu: UIView {
         }
     }
     
-    // The text alignment of the menu title. Default is NSTextAlignment.Left
+    // The text alignment of the menu title. Default is NSTextAlignment.Center
     public var menuTitleTextAlignment: NSTextAlignment {
         get {
             return self.configuration.menuTitleTextAlignment
@@ -144,7 +144,9 @@ public class JYDropDownMenu: UIView {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        
+        setupViews(frame, title: "", items: [])
     }
     
     // MARK: - Setting up the required views

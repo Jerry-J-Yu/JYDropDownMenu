@@ -38,7 +38,7 @@ class JYConfiguration {
     
     func setDefaultValues() {
         self.menuBackgroundColor = UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
-        self.menuTitleTextAlignment = NSTextAlignment.Left
+        self.menuTitleTextAlignment = NSTextAlignment.Center
         self.menuTitleFont = UIFont.systemFontOfSize(17.0)
         self.menuItemFont = UIFont.systemFontOfSize(17.0)
         self.menuTitleColor = UIColor.darkGrayColor()
