@@ -220,6 +220,12 @@ public class JYDropDownMenu: UIView {
                 self.superview?.addSubview(self.tableView)
             })
         } else {
+            self.tableView.reloadData()
+            
+            // Update TableView layout immediately or else
+            // reloadData() will interrupt the subsequent animation
+            self.tableView.layoutIfNeeded()
+            
             self.isMenuShown = false
             
             // Remove the normal-sized TableView from the superview
@@ -231,8 +237,6 @@ public class JYDropDownMenu: UIView {
                 tableViewShownFrame.size.height = 0
                 self.tableView.frame = tableViewShownFrame
                 self.superview?.addSubview(self.tableView)
-                }, completion: { Void in
-                    self.tableView.reloadData()
             })
         }
     }
