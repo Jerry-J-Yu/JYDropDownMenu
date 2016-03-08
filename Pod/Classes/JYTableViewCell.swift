@@ -30,10 +30,6 @@ class JYTableViewCell: UITableViewCell {
     var cellContentFrame: CGRect!
     var configuration: JYConfiguration!
     
-    override func layoutSubviews() {
-        self.bounds = self.cellContentFrame
-    }
-    
     // MARK: - Initialization
     
     init(frame: CGRect, style: UITableViewCellStyle, reuseIdentifier: String?, configuration: JYConfiguration) {

@@ -34,8 +34,8 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     // The choices of the TableView
     private var items: [String]!
     
-    // The selected indexPath
-    private var selectedIndexPath: Int!
+    // The selected indexPath.row
+    var selectedIndexPathRow: Int!
     
     // MARK: - Initialization
     
@@ -43,7 +43,7 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         super.init(frame: frame, style: UITableViewStyle.Plain)
         
         self.items = items
-        self.selectedIndexPath = 0
+        self.selectedIndexPathRow = -1
         self.configuration = configuration
         
         self.delegate = self
@@ -70,15 +70,19 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = JYTableViewCell(frame: frame, style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration)
+        
         cell.textLabel?.text = self.items[indexPath.row]
-        cell.accessoryType = (indexPath.row == selectedIndexPath) ? UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None
+        cell.accessoryType = (indexPath.row == self.selectedIndexPathRow) ? UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None
+        
         return cell
     }
     
     // MARK: - TableView delegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedIndexPath = indexPath.row
-        self.selectRowAtIndexPathHandler!(indexPath: indexPath.row)
+        self.selectedIndexPathRow = indexPath.row
+        self.reloadData()
+        
+        //self.selectRowAtIndexPathHandler!(indexPath: indexPath.row)
     }
 }
