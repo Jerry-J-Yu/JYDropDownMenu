@@ -48,9 +48,9 @@ public class JYDropDownMenu: UIView {
         get {
             // Cap the height of the menu at ten items
             if (self.items.count <= 10) {
-                return self.configuration.menuCellHeight * CGFloat(self.items.count)
+                return self.configuration.menuRowHeight * CGFloat(self.items.count)
             } else {
-                return self.configuration.menuCellHeight * 10.0
+                return self.configuration.menuRowHeight * 10.0
             }
         }
         
@@ -104,13 +104,13 @@ public class JYDropDownMenu: UIView {
     }
     
     // The cell height of the menu items. Default is 21.0
-    public var menuCellHeight: CGFloat {
+    public var menuRowHeight: CGFloat {
         get {
-            return self.configuration.menuCellHeight
+            return self.tableView.rowHeight
         }
         
         set (newValue) {
-            self.configuration.menuCellHeight = newValue
+            self.tableView.rowHeight = newValue
         }
     }
     
@@ -177,6 +177,7 @@ public class JYDropDownMenu: UIView {
         self.titleLabel.font = self.menuTitleFont
         self.titleLabel.text = title
         self.titleLabel.backgroundColor = self.configuration.menuBackgroundColor
+        self.titleLabel.numberOfLines = 0
         self.titleLabel.userInteractionEnabled = true
         
         let menuTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "animateMenu")
@@ -201,6 +202,9 @@ public class JYDropDownMenu: UIView {
             // Animate the menu
             self.animateMenu()
         }
+        
+        self.tableView.estimatedRowHeight = 44.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.superview?.addSubview(self.tableView)
     }

@@ -29,7 +29,7 @@ class JYConfiguration {
     var menuTitleTextAlignment: NSTextAlignment!
     var menuTitleFont: UIFont!
     var menuItemFont: UIFont!
-    var menuCellHeight: CGFloat!
+    var menuRowHeight: CGFloat!
     var menuTitleColor: UIColor?
     var menuItemColor: UIColor?
     
@@ -42,7 +42,7 @@ class JYConfiguration {
         self.menuTitleTextAlignment = NSTextAlignment.Center
         self.menuTitleFont = UIFont.systemFontOfSize(17.0)
         self.menuItemFont = UIFont.systemFontOfSize(17.0)
-        self.menuCellHeight = 21.0
+        self.menuRowHeight = 21.0
         self.menuTitleColor = UIColor.darkGrayColor()
         self.menuItemColor = UIColor.darkGrayColor()
     }

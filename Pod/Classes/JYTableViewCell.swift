@@ -36,10 +36,11 @@ class JYTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.configuration = configuration
-        self.cellContentFrame = CGRect(x: 0, y: 0, width: frame.size.width, height: self.configuration.menuCellHeight)
+        self.cellContentFrame = CGRect(x: 0, y: 0, width: frame.size.width, height: self.configuration.menuRowHeight)
         self.textLabel?.textColor = self.configuration.menuTitleColor
         self.textLabel?.font = self.configuration.menuItemFont
         self.textLabel?.textAlignment = NSTextAlignment.Left
+        self.textLabel?.numberOfLines = 0
         
         self.textLabel?.frame = CGRect(x: horizontalMargin, y: 0, width: self.cellContentFrame.width - horizontalMargin, height: self.cellContentFrame.height)
     }

@@ -64,10 +64,6 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         return self.items.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.configuration.menuCellHeight
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = JYTableViewCell(frame: frame, style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration)
         
