@@ -48,6 +48,7 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         
         // Add a border to the TableView
         self.layer.borderWidth = 2.0
+        self.layer.cornerRadius = 10.0
         
         self.delegate = self
         self.dataSource = self
