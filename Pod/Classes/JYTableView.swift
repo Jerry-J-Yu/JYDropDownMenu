@@ -46,6 +46,9 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.selectedIndexPathRow = -1
         self.configuration = configuration
         
+        // Add a border to the TableView
+        self.layer.borderWidth = 2.0
+        
         self.delegate = self
         self.dataSource = self
     }
