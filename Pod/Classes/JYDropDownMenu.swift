@@ -179,8 +179,8 @@ public class JYDropDownMenu: UIView {
         self.titleLabel.backgroundColor = self.configuration.menuBackgroundColor
         self.titleLabel.userInteractionEnabled = true
         
-        let showMenuTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "showMenu")
-        self.titleLabel.addGestureRecognizer(showMenuTapGestureRecognizer)
+        let menuTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "animateMenu")
+        self.titleLabel.addGestureRecognizer(menuTapGestureRecognizer)
         
         self.addSubview(self.titleLabel)
         
@@ -194,45 +194,33 @@ public class JYDropDownMenu: UIView {
         self.superview?.addSubview(self.tableView)
     }
     
-    func showMenu() {
-        // Remove the zero-height TableView from the superview
-        self.tableView.removeFromSuperview()
-        
-        // Animate in the newly resized TableView
-        UIView.animateWithDuration(0.5, animations: {
-            var tableViewShownFrame = self.tableView.frame
-            tableViewShownFrame.size.height = self.height
-            self.tableView.frame = tableViewShownFrame
-            self.superview?.addSubview(self.tableView)
-            }, completion: { Void in
-                // remove the existing UITapGestureRecognizer
-                for recognizer in self.titleLabel.gestureRecognizers! {
-                    self.titleLabel.removeGestureRecognizer(recognizer)
-                }
-                
-                let hideMenuTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideMenu")
-                self.titleLabel.addGestureRecognizer(hideMenuTapGestureRecognizer)
-        })
-    }
-    
-    func hideMenu() {
-        // Remove the normal-sized TableView from the superview
-        self.tableView.removeFromSuperview()
-        
-        // Animate in the zero-height TableView
-        UIView.animateWithDuration(0.5, animations: {
-            var tableViewShownFrame = self.tableView.frame
-            tableViewShownFrame.size.height = 0
-            self.tableView.frame = tableViewShownFrame
-            self.superview?.addSubview(self.tableView)
-            }, completion: { Void in
-                // remove the existing UITapGestureRecognizer
-                for recognizer in self.titleLabel.gestureRecognizers! {
-                    self.titleLabel.removeGestureRecognizer(recognizer)
-                }
-                
-                let showMenuTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "showMenu")
-                self.titleLabel.addGestureRecognizer(showMenuTapGestureRecognizer)
-        })
+    func animateMenu() {
+        if (!self.isMenuShown) {
+            self.isMenuShown = true
+            
+            // Remove the zero-height TableView from the superview
+            self.tableView.removeFromSuperview()
+            
+            // Animate in the newly resized TableView
+            UIView.animateWithDuration(0.5, animations: {
+                var tableViewShownFrame = self.tableView.frame
+                tableViewShownFrame.size.height = self.height
+                self.tableView.frame = tableViewShownFrame
+                self.superview?.addSubview(self.tableView)
+            })
+        } else {
+            self.isMenuShown = false
+            
+            // Remove the normal-sized TableView from the superview
+            self.tableView.removeFromSuperview()
+            
+            // Animate in the zero-height TableView
+            UIView.animateWithDuration(0.5, animations: {
+                var tableViewShownFrame = self.tableView.frame
+                tableViewShownFrame.size.height = 0
+                self.tableView.frame = tableViewShownFrame
+                self.superview?.addSubview(self.tableView)
+            })
+        }
     }
 }
