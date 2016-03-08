@@ -8,33 +8,22 @@
 
 Pod::Spec.new do |s|
   s.name             = "JYDropDownMenu"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of JYDropDownMenu."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+  s.version          = "1.0.0"
+  s.summary          = "A drop-down menu list for those who don't like UIPickerViews'"
   s.description      = <<-DESC
+                       JYDropDownMenu is a drop-down menu written in Swift. The title is a UIView with an embedded UILabel
+                       that contains the title of the menu, and clicking on the title will drop the menu down, from
+                       which you can select the item of your choice.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/JYDropDownMenu"
+  s.homepage         = "https://github.com/Jerry-J-Yu/JYDropDownMenu"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Jerry Yu" => "jerryyu@uchicago.edu" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/JYDropDownMenu.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/Jerry-J-Yu/JYDropDownMenu.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'JYDropDownMenu' => ['Pod/Assets/*.png']
-  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files = 'Source/*.swift'
 end
