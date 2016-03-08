@@ -1,8 +1,8 @@
 //
-//  JYConfiguration.swift
+//  JYTableViewCell.swift
 //  Pods
 //
-//  Created by Jerry Yu on 3/4/16.
+//  Created by Jerry Yu on 3/7/16.
 //  Copyright (c) 2016 Jerry Yu. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,26 +24,31 @@
 
 import UIKit
 
-class JYConfiguration {
-    var menuBackgroundColor: UIColor?
-    var menuTitleTextAlignment: NSTextAlignment!
-    var menuTitleFont: UIFont!
-    var menuItemFont: UIFont!
-    var menuCellHeight: CGFloat!
-    var menuTitleColor: UIColor?
-    var menuItemColor: UIColor?
+class JYTableViewCell: UITableViewCell {
+    let horizontalMargin: CGFloat = 20
     
-    init() {
-        self.setDefaultValues()
+    var cellContentFrame: CGRect!
+    var configuration: JYConfiguration!
+    
+    override func layoutSubviews() {
+        self.bounds = self.cellContentFrame
     }
     
-    func setDefaultValues() {
-        self.menuBackgroundColor = UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
-        self.menuTitleTextAlignment = NSTextAlignment.Center
-        self.menuTitleFont = UIFont.systemFontOfSize(17.0)
-        self.menuItemFont = UIFont.systemFontOfSize(17.0)
-        self.menuCellHeight = 21.0
-        self.menuTitleColor = UIColor.darkGrayColor()
-        self.menuItemColor = UIColor.darkGrayColor()
+    // MARK: - Initialization
+    
+    init(frame: CGRect, style: UITableViewCellStyle, reuseIdentifier: String?, configuration: JYConfiguration) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.configuration = configuration
+        self.cellContentFrame = CGRect(x: 0, y: 0, width: frame.size.width, height: self.configuration.menuCellHeight)
+        self.textLabel?.textColor = self.configuration.menuTitleColor
+        self.textLabel?.font = self.configuration.menuItemFont
+        self.textLabel?.textAlignment = NSTextAlignment.Left
+        
+        self.textLabel?.frame = CGRect(x: horizontalMargin, y: 0, width: self.cellContentFrame.width - (horizontalMargin * 2), height: self.cellContentFrame.height)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

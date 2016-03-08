@@ -46,7 +46,12 @@ public class JYDropDownMenu: UIView {
     // The height of the menu
     public var height: CGFloat {
         get {
-            return self.frame.size.height
+            // Cap the height of the menu at ten items
+            if (self.items.count <= 10) {
+                return self.configuration.menuCellHeight * CGFloat(self.items.count)
+            } else {
+                return self.configuration.menuCellHeight * 10.0
+            }
         }
         
         set (newValue) {
@@ -76,7 +81,7 @@ public class JYDropDownMenu: UIView {
         }
     }
     
-    // The font of the menu title. Default is System Font with the size calculated by the calculateAdaptiveFontSize() method
+    // The font of the menu title. Default is System Font, size 17.0
     public var menuTitleFont: UIFont {
         get {
             return self.configuration.menuTitleFont
@@ -87,7 +92,7 @@ public class JYDropDownMenu: UIView {
         }
     }
     
-    // The font of the menu items. Default is System Font with the size calculated by the calculateAdaptiveFontSize() method
+    // The font of the menu items. Default is System Font, size 17.0
     public var menuItemFont: UIFont {
         get {
             return self.configuration.menuItemFont
@@ -95,6 +100,17 @@ public class JYDropDownMenu: UIView {
         
         set (newValue) {
             self.configuration.menuItemFont = newValue
+        }
+    }
+    
+    // The cell height of the menu items. Default is 21.0
+    public var menuCellHeight: CGFloat {
+        get {
+            return self.configuration.menuCellHeight
+        }
+        
+        set (newValue) {
+            self.configuration.menuCellHeight = newValue
         }
     }
     
@@ -129,6 +145,9 @@ public class JYDropDownMenu: UIView {
     // The default configuration
     private var configuration = JYConfiguration()
     
+    // The TableView representing the menu items
+    private var tableView: JYTableView!
+    
     // The choices in the menu
     private var items: [String]!
     
@@ -152,8 +171,6 @@ public class JYDropDownMenu: UIView {
     // MARK: - Setting up the required views
     
     private func setupViews(frame: CGRect, title: String, items: [String]) {
-        self.backgroundColor = UIColor.greenColor()
-        
         self.titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         self.titleLabel.textAlignment = self.menuTitleTextAlignment
         self.titleLabel.textColor = self.menuTitleColor
@@ -169,10 +186,13 @@ public class JYDropDownMenu: UIView {
         
         self.items = items
         
+        self.tableView = JYTableView(frame: frame, items: self.items, configuration: self.configuration)
+        
         self.isMenuShown = false
     }
     
     func showMenu() {
-        // TODO: implement dropping down the menu
+        self.tableView.frame = CGRect(x: 0, y: frame.size.height, width: frame.size.width, height: self.height)
+        self.addSubview(self.tableView)
     }
 }
