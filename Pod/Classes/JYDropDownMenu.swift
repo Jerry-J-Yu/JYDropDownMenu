@@ -28,7 +28,7 @@ import UIKit
 
 @objc public protocol JYDropDownMenuDelegate {
     // Call after menu item is selected
-    func dropDownMenu(dropDownMenu: JYDropDownMenu, didSelectMenuItemAtIndexPath indexPath: NSIndexPath)
+    func dropDownMenu(dropDownMenu: JYDropDownMenu, didSelectMenuItemAtIndexPathRow indexPathRow: Int)
 }
 
 public class JYDropDownMenu: UIView {
@@ -191,6 +191,17 @@ public class JYDropDownMenu: UIView {
         let tableViewHiddenFrame: CGRect = CGRect(x: frame.origin.x, y: frame.origin.y + frame.size.height, width: frame.size.width, height: 0)
         self.tableView = JYTableView(frame: tableViewHiddenFrame, items: self.items, configuration: self.configuration)
         
+        self.tableView.selectRowAtIndexPathHandler = { (indexPathRow: Int) -> () in
+            // Pass the data through the delegate to the view controller containing the JYDropDownMenu
+            self.delegate?.dropDownMenu(self, didSelectMenuItemAtIndexPathRow: indexPathRow)
+            
+            // Change the menu title to the selected item
+            self.title = self.items[indexPathRow]
+            
+            // Animate the menu
+            self.animateMenu()
+        }
+        
         self.superview?.addSubview(self.tableView)
     }
     
@@ -220,6 +231,8 @@ public class JYDropDownMenu: UIView {
                 tableViewShownFrame.size.height = 0
                 self.tableView.frame = tableViewShownFrame
                 self.superview?.addSubview(self.tableView)
+                }, completion: { Void in
+                    self.tableView.reloadData()
             })
         }
     }

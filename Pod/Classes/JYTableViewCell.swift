@@ -41,7 +41,7 @@ class JYTableViewCell: UITableViewCell {
         self.textLabel?.font = self.configuration.menuItemFont
         self.textLabel?.textAlignment = NSTextAlignment.Left
         
-        self.textLabel?.frame = CGRect(x: horizontalMargin, y: 0, width: self.cellContentFrame.width - (horizontalMargin * 2), height: self.cellContentFrame.height)
+        self.textLabel?.frame = CGRect(x: horizontalMargin, y: 0, width: self.cellContentFrame.width - horizontalMargin, height: self.cellContentFrame.height)
     }
     
     required init?(coder aDecoder: NSCoder) {

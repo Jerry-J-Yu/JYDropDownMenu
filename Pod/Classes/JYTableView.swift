@@ -29,13 +29,13 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     var configuration: JYConfiguration!
     
     // The callback when an indexPath is selected
-    var selectRowAtIndexPathHandler: ((indexPath: Int) -> ())?
-    
-    // The choices of the TableView
-    private var items: [String]!
+    var selectRowAtIndexPathHandler: ((indexPathRow: Int) -> ())?
     
     // The selected indexPath.row
     var selectedIndexPathRow: Int!
+    
+    // The choices of the TableView
+    private var items: [String]!
     
     // MARK: - Initialization
     
@@ -73,6 +73,7 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         
         cell.textLabel?.text = self.items[indexPath.row]
         cell.accessoryType = (indexPath.row == self.selectedIndexPathRow) ? UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return cell
     }
@@ -81,8 +82,6 @@ class JYTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedIndexPathRow = indexPath.row
-        self.reloadData()
-        
-        //self.selectRowAtIndexPathHandler!(indexPath: indexPath.row)
+        self.selectRowAtIndexPathHandler!(indexPathRow: indexPath.row)
     }
 }
