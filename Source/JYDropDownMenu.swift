@@ -70,6 +70,17 @@ public class JYDropDownMenu: UIView {
         }
     }
     
+    // The background color of the menu title. Default is UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+    public var menuTitleBackgroundColor: UIColor! {
+        get {
+            return self.configuration.menuTitleBackgroundColor
+        }
+        
+        set (newValue) {
+            self.configuration.menuTitleBackgroundColor = newValue
+        }
+    }
+    
     // The text alignment of the menu title. Default is NSTextAlignment.Center
     public var menuTitleTextAlignment: NSTextAlignment {
         get {
@@ -176,7 +187,7 @@ public class JYDropDownMenu: UIView {
         self.titleLabel.textColor = self.menuTitleColor
         self.titleLabel.font = self.menuTitleFont
         self.titleLabel.text = title
-        self.titleLabel.backgroundColor = self.configuration.menuBackgroundColor
+        self.titleLabel.backgroundColor = self.configuration.menuTitleBackgroundColor
         self.titleLabel.numberOfLines = 0
         self.titleLabel.userInteractionEnabled = true
         
