@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  StoryboardExample
 //
-//  Created by Ying Gao on 3/9/16.
+//  Created by Jerry Yu on 3/9/16.
 //  Copyright © 2016 Jerry Yu. All rights reserved.
 //
 
