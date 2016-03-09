@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  JYDropDownMenu
+//  ProgrammaticallyExample
 //
-//  Created by Jerry Yu on 03/01/2016.
-//  Copyright (c) 2016 Jerry Yu. All rights reserved.
+//  Created by Ying Gao on 3/9/16.
+//  Copyright © 2016 Jerry Yu. All rights reserved.
 //
 
 import UIKit

@@ -1,0 +1,14 @@
+PODS:
+  - JYDropDownMenu (0.1.0)
+
+DEPENDENCIES:
+  - JYDropDownMenu (from `../`)
+
+EXTERNAL SOURCES:
+  JYDropDownMenu:
+    :path: ../
+
+SPEC CHECKSUMS:
+  JYDropDownMenu: 698643795abe1521a00ffd20d18553cf46b4a7b8
+
+COCOAPODS: 0.39.0
