@@ -1,5 +1,5 @@
 # JYDropDownMenu
-A drop-down menu list as an alternative to UIPickerView
+A drop-down menu list as an alternative to UIPickerView.
 
 ## Installation:
 
@@ -30,11 +30,11 @@ let dropDownMenu = JYDropDownMenu(frame: CGRect(x: 50, y: 50, width: 260, height
 ```
 Implement the delegate
 ```swift
-self.dropDownMenu.delegate = self
+dropDownMenu.delegate = self
 ```
 Add the JYDropDownMenu as a `subview`.
 ```swift
-self.view.addSubview(self.dropDownMenu)
+self.view.addSubview(dropDownMenu)
 ```
 Use delegate method to determine which item in the array was selected
 ```swift
@@ -92,3 +92,6 @@ Once you have assigned the items and the frame of the JYDropDownMenu, you can cu
 
 ## License
 JYDropDownMenu is available under the MIT License. See the [LICENSE](https://github.com/Jerry-J-Yu/JYDropDownMenu/blob/master/LICENSE) for details
+
+## Acknowledgements
+Because this is the first time I attempted creating a CocoaPods library, I used, among other libraries, [BTNavigationDropdownMenu](https://github.com/PhamBaTho/BTNavigationDropdownMenu) and [KSTokenView](https://github.com/khawars/KSTokenView) as inspiration. Kudos to the authors of those libraries.
