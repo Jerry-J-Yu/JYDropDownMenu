@@ -1,6 +1,8 @@
 # JYDropDownMenu
 A drop-down menu list as an alternative to UIPickerView.
 
+![](https://raw.githubusercontent.com/Jerry-J-Yu/JYDropDownMenu/master/Demo.gif)
+
 ## Installation:
 
 ### Method 1 (CocoaPods only for iOS 8.0 and above)
