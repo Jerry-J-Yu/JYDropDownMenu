@@ -76,6 +76,19 @@ Once you have assigned the items and the frame of the JYDropDownMenu, you can cu
 
 `title` **The title of the menu.**
 
+`menuBackgroundColor` **The background color of the menu title.** *Default is UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)*
+
 `menuTitleTextAlignment` **The text alignment of the menu title.** *Default is NSTextAlignment.Center*
 
-`menuBackgroundColor` **The background of the menu title.** *Default is NSTextAlignment.Center*
+`menuTitleFont` **The font of the menu title.** *Default is UIFont.systemFontOfSize(17.0)*
+
+`menuItemFont` **The font of the menu items.** *Default is UIFont.systemFontOfSize(17.0)*
+
+`menuRowHeight` **The cell height of the menu items.** *Default is UITableViewAutomaticDimension*
+
+`menuTitleColor` **The font color of the menu title.** *Default is darkGrayColor()*
+
+`menuItemColor` **The font color of the menu items.** *Default is darkGrayColor()*
+
+## License
+JYDropDownMenu is available under the MIT License. See the [LICENSE](https://github.com/Jerry-J-Yu/JYDropDownMenu/blob/master/LICENSE) for details
