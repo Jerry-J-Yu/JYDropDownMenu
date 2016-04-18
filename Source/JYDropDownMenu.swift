@@ -77,7 +77,7 @@ public class JYDropDownMenu: UIView {
         }
         
         set (newValue) {
-            self.configuration.menuTitleBackgroundColor = newValue
+            self.titleLabel.backgroundColor = newValue
         }
     }
     
@@ -88,7 +88,7 @@ public class JYDropDownMenu: UIView {
         }
         
         set (newValue) {
-            self.configuration.menuTitleTextAlignment = newValue
+            self.titleLabel.textAlignment = newValue
         }
     }
     
@@ -99,7 +99,7 @@ public class JYDropDownMenu: UIView {
         }
         
         set (newValue) {
-            self.configuration.menuTitleFont = newValue
+            self.titleLabel.font = newValue
         }
     }
     
@@ -132,7 +132,7 @@ public class JYDropDownMenu: UIView {
         }
         
         set (newValue) {
-            self.configuration.menuTitleColor = newValue
+            self.titleLabel.textColor = newValue
         }
     }
     

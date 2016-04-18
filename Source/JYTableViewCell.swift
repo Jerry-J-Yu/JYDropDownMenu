@@ -37,7 +37,7 @@ class JYTableViewCell: UITableViewCell {
         
         self.configuration = configuration
         self.cellContentFrame = CGRect(x: 0, y: 0, width: frame.size.width, height: self.configuration.menuRowHeight)
-        self.textLabel?.textColor = self.configuration.menuTitleColor
+        self.textLabel?.textColor = self.configuration.menuItemColor
         self.textLabel?.font = self.configuration.menuItemFont
         self.textLabel?.textAlignment = NSTextAlignment.Left
         self.textLabel?.numberOfLines = 0

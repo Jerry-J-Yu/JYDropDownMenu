@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "JYDropDownMenu"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "A drop-down menu list as an alternative to UIPickerView."
   s.description      = <<-DESC
                        JYDropDownMenu is a drop-down menu written in Swift. The title is a UIView with an embedded UILabel
