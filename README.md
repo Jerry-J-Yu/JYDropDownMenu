@@ -13,7 +13,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'JYDropDownMenu', '~> 1.0.0'
+pod 'JYDropDownMenu', '~> 1.0.1'
 ```
 
 ### Method 2 (Source files)
@@ -78,7 +78,7 @@ Once you have assigned the items and the frame of the JYDropDownMenu, you can cu
 
 `title` **The title of the menu.**
 
-`menuBackgroundColor` **The background color of the menu title.** *Default is UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)*
+`menuTitleBackgroundColor` **The background color of the menu title.** *Default is UIColor(red: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)*
 
 `menuTitleTextAlignment` **The text alignment of the menu title.** *Default is NSTextAlignment.Center*
 
